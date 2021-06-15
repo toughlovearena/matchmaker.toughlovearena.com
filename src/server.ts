@@ -28,6 +28,7 @@ export class Server {
       const data = {
         gitHash,
         started,
+        testId: 7,
         envs: envs.map(env => ({
           label: env.label,
           path: env.path,
