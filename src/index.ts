@@ -1,5 +1,4 @@
 import { Updater } from '@toughlovearena/updater';
-import simpleGit from 'simple-git';
 import { Matchmaker } from './matchmaker';
 import { Server, ServerEnv } from './server';
 import { sleep } from './util';
@@ -17,12 +16,10 @@ const envs: ServerEnv[] = [{
 }];
 
 (async () => {
-  const gitLog = await simpleGit().log();
-  const gitHash = gitLog.latest.hash;
-
   // start SSE server
-  new Server(gitHash, envs).listen(2999);
-  new Updater().cron();
+  const updater = new Updater();
+  new Server(updater, envs).listen(2999);
+  updater.cron();
 
   // start interval to send SSE
   while (true) {

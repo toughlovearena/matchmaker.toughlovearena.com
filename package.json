@@ -21,12 +21,11 @@
     "ci-test": "jest --detectOpenHandles --runInBand"
   },
   "dependencies": {
-    "@toughlovearena/updater": "^2.0.0",
+    "@toughlovearena/updater": "^2.1.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "geoip-lite": "^1.4.2",
     "haversine-distance": "^1.2.1",
-    "simple-git": "^2.39.0",
     "ssestream": "^1.1.0"
   },
   "devDependencies": {

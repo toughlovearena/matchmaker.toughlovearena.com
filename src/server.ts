@@ -1,3 +1,4 @@
+import { Updater } from '@toughlovearena/updater';
 import cors from 'cors';
 import express from 'express';
 import SseStream from 'ssestream';
@@ -15,8 +16,7 @@ export class Server {
   private app = express();
   private geo = new GeoManager();
 
-  constructor(gitHash: string, envs: ServerEnv[]) {
-    const started = new Date();
+  constructor(updater: Updater, envs: ServerEnv[]) {
     this.app.use(cors());
     this.app.use(express.json());
     this.app.set('trust proxy', true);
@@ -24,11 +24,12 @@ export class Server {
     this.app.get('/', (req, res) => {
       res.redirect('/health');
     });
-    this.app.get('/health', (req, res) => {
+    this.app.get('/health', async (req, res) => {
+      const gitHash = await updater.gitter.hash();
       const data = {
         gitHash,
-        started,
-        testId: 7,
+        started: new Date(updater.startedAt),
+        testId: 0,
         envs: envs.map(env => ({
           label: env.label,
           path: env.path,
