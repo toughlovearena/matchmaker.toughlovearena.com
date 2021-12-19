@@ -68,6 +68,6 @@ nvm install $(cat .nvmrc)
 git clone https://github.com/toughlovearena/matchmaker.toughlovearena.com.git
 cd matchmaker.toughlovearena.com
 npm i
-npm bg
+npm run bg
 
 ```
