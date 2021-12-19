@@ -107,19 +107,6 @@ export class Server {
           },
         });
       });
-      this.app.get(env.path + '/v3/ranked/:ver/:mmr/:mmrRange', (req, res) => {
-        const { ver, mmr, mmrRange } = req.params;
-        const position: OptionalGeoPosition = this.geo.lookupIp(req.ip);
-        this.subscribe({
-          req,
-          res,
-          ver,
-          mm: env.ranked,
-          mmr: parseInt(mmr, 10),
-          mmrRange: parseInt(mmrRange, 10),
-          position,
-        });
-      });
       // v4
       this.app.get(env.path + '/v4/ranked/:ver/:aid/:mmr/:mmrRange', (req, res) => {
         const { ver, aid, mmr, mmrRange } = req.params;
