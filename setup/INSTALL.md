@@ -57,7 +57,7 @@ sudo certbot renew --dry-run
 ```bash
 
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-nvm install 10.6
+nvm install $(cat .nvmrc)
 
 ```
 
@@ -65,8 +65,8 @@ nvm install 10.6
 
 ```bash
 
-git clone https://github.com/toughlovearena/match.toughlovearena.com.git
-cd match.toughlovearena.com
+git clone https://github.com/toughlovearena/matchmaker.toughlovearena.com.git
+cd matchmaker.toughlovearena.com
 npm i
 npm bg
 
